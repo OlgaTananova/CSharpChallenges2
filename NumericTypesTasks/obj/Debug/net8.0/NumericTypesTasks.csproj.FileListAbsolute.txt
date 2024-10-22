@@ -1,0 +1,14 @@
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.AssemblyInfoInputs.cache
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.AssemblyInfo.cs
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.csproj.CoreCompileInputs.cache
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\bin\Debug\net8.0\NumericTypesTasks.exe
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\bin\Debug\net8.0\NumericTypesTasks.deps.json
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\bin\Debug\net8.0\NumericTypesTasks.runtimeconfig.json
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\bin\Debug\net8.0\NumericTypesTasks.dll
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\bin\Debug\net8.0\NumericTypesTasks.pdb
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.dll
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\refint\NumericTypesTasks.dll
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.pdb
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\NumericTypesTasks.genruntimeconfig.cache
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\obj\Debug\net8.0\ref\NumericTypesTasks.dll

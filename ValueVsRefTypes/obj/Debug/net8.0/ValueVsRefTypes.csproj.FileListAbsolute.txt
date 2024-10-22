@@ -1,0 +1,15 @@
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\bin\Debug\net8.0\ValueVsRefTypes.exe
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\bin\Debug\net8.0\ValueVsRefTypes.deps.json
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\bin\Debug\net8.0\ValueVsRefTypes.runtimeconfig.json
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\bin\Debug\net8.0\ValueVsRefTypes.dll
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\bin\Debug\net8.0\ValueVsRefTypes.pdb
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.AssemblyInfoInputs.cache
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.AssemblyInfo.cs
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.csproj.CoreCompileInputs.cache
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.sourcelink.json
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.dll
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\refint\ValueVsRefTypes.dll
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.pdb
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ValueVsRefTypes.genruntimeconfig.cache
+C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\ValueVsRefTypes\obj\Debug\net8.0\ref\ValueVsRefTypes.dll

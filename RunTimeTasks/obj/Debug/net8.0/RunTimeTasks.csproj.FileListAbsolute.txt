@@ -1,0 +1,14 @@
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\bin\Debug\net8.0\RunTimeTasks.exe
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\bin\Debug\net8.0\RunTimeTasks.deps.json
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\bin\Debug\net8.0\RunTimeTasks.runtimeconfig.json
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\bin\Debug\net8.0\RunTimeTasks.dll
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\bin\Debug\net8.0\RunTimeTasks.pdb
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.AssemblyInfoInputs.cache
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.AssemblyInfo.cs
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.csproj.CoreCompileInputs.cache
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.dll
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\refint\RunTimeTasks.dll
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.pdb
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\RunTimeTasks.genruntimeconfig.cache
+C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\RunTimeTasks\obj\Debug\net8.0\ref\RunTimeTasks.dll
