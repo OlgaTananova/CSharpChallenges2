@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NumericTypesTasks
-build_property.ProjectDir = C:\Users\Olga\OneDrive\Documents\.NET\codingTasks\NumericTypesTasks\
+build_property.ProjectDir = C:\Users\Olga\OneDrive\Documents\.NET\CSharpChallenges2\NumericTypesTasks\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

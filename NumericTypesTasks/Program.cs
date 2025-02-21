@@ -63,3 +63,9 @@ CheckWithIsClass.CheckWithIs(inpt1);
 CheckWithIsClass.CheckWithIs(inpt2);
 CheckWithIsClass.CheckWithIs(inpt3);
 CheckWithIsClass.CheckWithIs(inpt4);
+
+// Task 8
+// Given two floats how do you determine which is larger and when this is determined how would you pass the 
+//value out as a string
+Console.WriteLine("Task 8");
+Console.WriteLine(SumOfTwoFloats.GetLargerToString(2.9F, 3.9F));
