@@ -5,13 +5,22 @@ namespace OrderProcessing.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
+    public AppDbContext(DbContextOptions options) : base(options)
+    {
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseNpgsql("Server=localhost:5432;Database=orderprocessing;Username=user;Password=user123");
+        }
+
+    }
+
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
-
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -38,9 +47,9 @@ public class AppDbContext : DbContext
                    new Customer { Id = 3, Name = "Jack" }
                );
         modelBuilder.Entity<Order>().HasData(
-                new Order { Id = 1, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-5), IsPaid = true },
-                new Order { Id = 2, CustomerId = 2, OrderDate = DateTime.Now.AddDays(-10), IsPaid = true },
-                new Order { Id = 3, CustomerId = 3, OrderDate = DateTime.Now.AddDays(-1), IsPaid = false }
+                new Order { Id = 1, CustomerId = 1, OrderDate = DateTime.UtcNow.AddDays(-5), IsPaid = true },
+                new Order { Id = 2, CustomerId = 2, OrderDate = DateTime.UtcNow.AddDays(-10), IsPaid = true },
+                new Order { Id = 3, CustomerId = 3, OrderDate = DateTime.UtcNow.AddDays(-1), IsPaid = false }
             );
 
         modelBuilder.Entity<OrderItem>().HasData(

@@ -3,9 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OrderProcessing.Infrastructure.Data;
 
+
 // Set up dependency injection
 var serviceProvider = new ServiceCollection()
-    .AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=app.db"))
+    .AddDbContext<AppDbContext>(options => options.UseNpgsql("Server=localhost:5432;Database=orderprocessing;Username=user;Password=user123"))
     .AddScoped<OrderProcessingRepository>()
     .BuildServiceProvider();
 
@@ -17,7 +18,6 @@ using (var scope = serviceProvider.CreateScope())
 
     // Get DbContext and apply migrations
     var context = scopedProvider.GetRequiredService<AppDbContext>();
-    context.Database.Migrate();
 
     // Get Repository Service
     var service = scopedProvider.GetRequiredService<OrderProcessingRepository>();
