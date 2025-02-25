@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using OrderProcessing.Core.Models;
 
 namespace OrderProcessing.Core.Services;
@@ -113,16 +114,62 @@ public class OrderProcessingService : IOrderProcessingService
 
     public Dictionary<string, List<(string CustomerName, decimal TotalSpending)>> GroupCustomersBySpendingBrackets(List<Customer> customers)
     {
-        throw new NotImplementedException();
+        return customers
+                 .Select(c =>
+                 {
+                     var totalSpending = c.Orders
+                                             .Where(o => o.IsPaid)
+                                             .SelectMany(o => o.Items)
+                                             .Sum(i => i.Quantity * i.Price);
+                     var bracket = totalSpending >= 1000 ? "Premium" :
+                                     totalSpending >= 500 ? "Gold" :
+                                     totalSpending > 0 ? "Regular" : "None";
+                     return new
+                     {
+                         Bracket = bracket,
+                         Customer = (c.Name, totalSpending)
+
+                     };
+                 })
+                 .Where(c => c.Bracket != "None")
+                 .GroupBy(c => c.Bracket)
+                 .ToDictionary(g => g.Key, g => g.Select(c => c.Customer).ToList());
     }
 
     public List<(string CustomerName, decimal TotalSpending, int OrderCount)> GetCustomersWithTotalSpendingAndOrderCounts(List<Customer> customers)
     {
-        throw new NotImplementedException();
+        return customers
+                    .Select(c =>
+                    {
+                        var totalSpending = c.Orders
+                                                .Where(o => o.IsPaid)
+                                                .SelectMany(o => o.Items)
+                                                .Sum(i => i.Quantity * i.Price);
+                        var orderCount = c.Orders
+                                                .Where(o => o.IsPaid)
+                                                .Count();
+                        return (c.Name, totalSpending, orderCount);
+                    }).ToList();
     }
 
-    public List<(string, decimal, int)> GetCustomersWithTotalSpendingByPages(List<Customer> customers, int pageNumber, int pageSize)
+    public List<(string CustomerName, decimal TotalSpending, int OrderCount)> GetCustomersWithTotalSpendingByPages(List<Customer> customers, int pageNumber, int pageSize)
     {
-        throw new NotImplementedException();
+        return customers
+                    .Select(c =>
+                    {
+                        var totalSpending = c.Orders
+                                                .Where(o => o.IsPaid)
+                                                .SelectMany(o => o.Items)
+                                                .Sum(i => i.Quantity * i.Price);
+                        var orderCount = c.Orders
+                                                .Where(o => o.IsPaid)
+                                                .Count();
+                        return (c.Name, totalSpending, orderCount);
+                    })
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
     }
+
 }

@@ -167,5 +167,38 @@ public class OrderProcessingTests
         Assert.Equal(760, result[1].DiscountedTotal);
     }
 
+    [Fact]
+    public void GetCustomersBySpendingBrackets_ShouldReturnNotNull()
+    {
+        var result = _service.GroupCustomersBySpendingBrackets(_customers);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal("Alice", result?.GetValueOrDefault("Premium")?.First().CustomerName);
+    }
+
+    [Fact]
+    public void GetCustomersWithTotalSpendingAndOrderCounts_ShouldReturnTwo()
+    {
+        var result = _service.GetCustomersWithTotalSpendingAndOrderCounts(_customers);
+
+        //Assert
+        Assert.NotEmpty(result);
+        Assert.Equal(3, result.Count);
+
+    }
+
+    [Fact]
+    public void GetCustomersWithTotalSpendingByPages_ShouldReturnTwoEntries()
+    {
+        var result = _service.GetCustomersWithTotalSpendingByPages(_customers, 1, 2);
+
+        //Assert
+
+        Assert.NotEmpty(result);
+        Assert.Equal(2, result.Count);
+
+    }
+
 
 }

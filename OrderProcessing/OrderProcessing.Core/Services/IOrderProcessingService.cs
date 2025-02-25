@@ -1,4 +1,3 @@
-using System;
 using OrderProcessing.Core.Models;
 
 namespace OrderProcessing.Core.Services;
@@ -19,5 +18,5 @@ public interface IOrderProcessingService
 
     public List<(string CustomerName, decimal TotalSpending, int OrderCount)> GetCustomersWithTotalSpendingAndOrderCounts(List<Customer> customers);
 
-    public List<(string, decimal, int)> GetCustomersWithTotalSpendingByPages(List<Customer> customers, int pageNumber, int pageSize);
+    public List<(string CustomerName, decimal TotalSpending, int OrderCount)> GetCustomersWithTotalSpendingByPages(List<Customer> customers, int pageNumber, int pageSize);
 }

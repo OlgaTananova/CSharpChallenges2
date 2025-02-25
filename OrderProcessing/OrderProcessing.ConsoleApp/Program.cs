@@ -1,27 +1,36 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using OrderProcessing.Infrastructure.Data;
 
-using OrderProcessing.Core.Models;
-using OrderProcessing.Core.Services;
+// Set up dependency injection
+var serviceProvider = new ServiceCollection()
+    .AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=app.db"))
+    .AddScoped<OrderProcessingRepository>()
+    .BuildServiceProvider();
 
-var customers = new List<Customer>
-        {
-            new Customer
-            {
-                Id = 1, Name = "Alice",
-                Orders = new List<Order>
-                {
-                    new Order
-                    {
-                        Id = 101, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-5), IsPaid = true,
-                        Items = new List<OrderItem>
-                        {
-                            new OrderItem { Id = 1, ProductName = "Laptop", Quantity = 1, Price = 1000 },
-                            new OrderItem { Id = 2, ProductName = "Mouse", Quantity = 2, Price = 25 }
-                        }
-                    }
-                }
-            },
-            new Customer { Id = 2, Name = "Bob", Orders = new List<Order>() } // No orders
-        };
 
-var service = new OrderProcessingService();
+// Use a service scope to avoid multiple instantiations of DbContext
+using (var scope = serviceProvider.CreateScope())
+{
+    var scopedProvider = scope.ServiceProvider;
+
+    // Get DbContext and apply migrations
+    var context = scopedProvider.GetRequiredService<AppDbContext>();
+    context.Database.Migrate();
+
+    // Get Repository Service
+    var service = scopedProvider.GetRequiredService<OrderProcessingRepository>();
+    Console.WriteLine("Get most popular products");
+
+    // Run Query
+    var products = service.GetMostPopularProducts(4);
+
+    // Display Results
+    foreach (var product in products)
+    {
+        Console.WriteLine(product + "\n");
+    }
+}
+
+

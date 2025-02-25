@@ -1,4 +1,3 @@
-using System;
 
 namespace OrderProcessing.Core.Models;
 
