@@ -11,8 +11,7 @@
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.1",
-          "OrderProcessing.Core": "1.0.0",
-          "OrderProcessing.Infrastructure": "1.0.0"
+          "OrderProcessing.Core": "1.0.0"
         },
         "runtime": {
           "OrderProcessing.ConsoleApp.dll": {}
@@ -651,19 +650,13 @@
       },
       "System.Threading.Channels/7.0.0": {},
       "OrderProcessing.Core/1.0.0": {
-        "runtime": {
-          "OrderProcessing.Core.dll": {}
-        }
-      },
-      "OrderProcessing.Infrastructure/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.0",
-          "Microsoft.EntityFrameworkCore.Relational": "9.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.1",
-          "OrderProcessing.Core": "1.0.0"
+          "Microsoft.EntityFrameworkCore.Design": "9.0.0",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.1"
         },
         "runtime": {
-          "OrderProcessing.Infrastructure.dll": {}
+          "OrderProcessing.Core.dll": {}
         }
       }
     }
@@ -976,11 +969,6 @@
       "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
     },
     "OrderProcessing.Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "OrderProcessing.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

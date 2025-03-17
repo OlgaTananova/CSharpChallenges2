@@ -1,5 +1,3 @@
-using System;
-using System.Reflection.Metadata.Ecma335;
 
 namespace TicTacToeConsole;
 
@@ -32,54 +30,65 @@ public class TicTacToeGame
 
     public void PlayGame()
     {
-        int moves = 0;
-        bool gameRunning = true;
+        bool playAgain = true;
 
-        while (gameRunning && moves < 9)
+        while (playAgain)
         {
-            PrintBoard();
-            Console.WriteLine($"Player {CurrentPlayer}, it's your turn. Enter a number (1-9): ");
+            int moves = 0;
+            bool gameRunning = true;
+            ResetBoard();
 
-            string? input = Console.ReadLine();
-            int position = ParseAndValidateInput(input);
-            if (position != 0)
+            while (gameRunning && moves < 9)
             {
-                if (MakeMove(position))
-                {
-                    moves++;
+                PrintBoard();
+                Console.WriteLine($"Player {CurrentPlayer}, it's your turn. Enter a number (1-9): ");
 
-                    if (CheckWin())
+                string? input = Console.ReadLine();
+                int position = ParseAndValidateInput(input);
+                if (position != 0)
+                {
+                    if (MakeMove(position))
                     {
-                        Console.Clear();
-                        PrintBoard();
-                        Console.WriteLine($"The winner is {CurrentPlayer}.");
-                        gameRunning = false;
-                    }
-                    else if (moves == 9)
-                    {
-                        Console.Clear();
-                        PrintBoard();
-                        Console.WriteLine($"It is a draw!");
-                        gameRunning = false;
+                        moves++;
+                        char winner = CurrentPlayer;
+
+                        if (CheckWin())
+                        {
+                            Console.Clear();
+                            PrintBoard();
+                            Console.WriteLine($"The winner is {winner}.");
+                            gameRunning = false;
+                        }
+                        else if (moves == 9)
+                        {
+                            Console.Clear();
+                            PrintBoard();
+                            Console.WriteLine($"It is a draw!");
+                            gameRunning = false;
+                        }
+                        else
+                        {
+                            CurrentPlayer = (CurrentPlayer == 'X') ? 'O' : 'X';
+                        }
+
+
                     }
                     else
                     {
-                        CurrentPlayer = (CurrentPlayer == 'X') ? 'O' : 'X';
+                        Console.WriteLine("Invalid move. Try again.");
                     }
-
 
                 }
                 else
                 {
-                    Console.WriteLine("Invalid move. Try again.");
+                    Console.WriteLine("Invalid input, please type in valid board position.");
                 }
 
             }
-            else
-            {
-                Console.WriteLine("Invalid input, please type in valid board position.");
-            }
 
+            Console.WriteLine($"Do you want to play again? Please type y/n.");
+            string? answer = Console.ReadLine()?.ToLower();
+            playAgain = answer == "y";
         }
     }
 
@@ -98,8 +107,14 @@ public class TicTacToeGame
         }
     }
 
-    private bool MakeMove(int position)
+    public bool MakeMove(int position)
     {
+        if (position < 0 || position > 9)
+        {
+            Console.WriteLine("Invalid move!. Try again.");
+            return false;
+        }
+        
         int row = (position - 1) / 3;
         int col = (position - 1) % 3;
 
@@ -115,7 +130,7 @@ public class TicTacToeGame
 
     }
 
-    private bool CheckWin()
+    public bool CheckWin()
     {
         for (int i = 0; i < 3; i++)
         {
@@ -126,7 +141,7 @@ public class TicTacToeGame
         return CheckDiagonalGrid();
     }
 
-    private bool CheckHorizontalAndVerticalGrid(int i)
+    public bool CheckHorizontalAndVerticalGrid(int i)
     {
         if ((Board[i, 0] == CurrentPlayer && Board[i, 1] == CurrentPlayer && Board[i, 2] == CurrentPlayer) ||
             (Board[0, i] == CurrentPlayer && Board[1, i] == CurrentPlayer && Board[2, i] == CurrentPlayer))
@@ -136,7 +151,7 @@ public class TicTacToeGame
         return false;
     }
 
-    private bool CheckDiagonalGrid()
+    public bool CheckDiagonalGrid()
     {
         if ((Board[0, 0] == CurrentPlayer && Board[1, 1] == CurrentPlayer && Board[2, 2] == CurrentPlayer) ||
             (Board[0, 2] == CurrentPlayer && Board[1, 1] == CurrentPlayer && Board[2, 0] == CurrentPlayer))
@@ -144,6 +159,17 @@ public class TicTacToeGame
             return true;
         }
         return false;
+    }
+
+    private void ResetBoard()
+    {
+        Board = new char[,]
+           {
+            { '1', '2', '3' },
+            { '4', '5', '6' },
+            { '7', '8', '9' }
+           };
+        CurrentPlayer = 'X';
     }
 
 }

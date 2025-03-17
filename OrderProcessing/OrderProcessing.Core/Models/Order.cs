@@ -10,5 +10,16 @@ public class Order
     public DateTime OrderDate { get; set; }
     public bool IsPaid { get; set; }
 
+    public OrderStatus Status { get; set; } = OrderStatus.Pending;
+
+    public decimal Total { get; set; }
+
     public string PreferredCurrency { get; set; } = "USD";
+}
+
+public enum OrderStatus
+{
+    Pending = 1,
+    Processing = 2,
+    Completed = 3,
 }

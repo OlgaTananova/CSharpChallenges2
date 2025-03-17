@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using OrderProcessing.Core.Models;
 
 namespace OrderProcessing.Core.Services;
@@ -67,12 +65,12 @@ public class OrderProcessingService : IOrderProcessingService
         return customers.Where(c => c.Orders.Count == 0).ToList();
     }
 
-    public List<string> GetMostPopularProducts(List<Customer> customers, int topN)
+    public List<int> GetMostPopularProducts(List<Customer> customers, int topN)
     {
         return customers
             .SelectMany(c => c.Orders)
             .SelectMany(o => o.Items)
-            .GroupBy(i => i.ProductName)
+            .GroupBy(i => i.ProductId)
             .OrderByDescending(p => p.Sum(p => p.Quantity))
             .Take(topN)
             .Select(g => g.Key)

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangmanGame.Console", "HangmanGame.Console\HangmanGame.Console.csproj", "{97FD6B84-52FB-4FBE-8707-F2683B37103D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangmanGame.Tests", "HangmanGame.Tests\HangmanGame.Tests.csproj", "{ECCE44AA-E5D8-4D24-85BD-58D4605909D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97FD6B84-52FB-4FBE-8707-F2683B37103D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97FD6B84-52FB-4FBE-8707-F2683B37103D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97FD6B84-52FB-4FBE-8707-F2683B37103D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97FD6B84-52FB-4FBE-8707-F2683B37103D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECCE44AA-E5D8-4D24-85BD-58D4605909D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCE44AA-E5D8-4D24-85BD-58D4605909D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCE44AA-E5D8-4D24-85BD-58D4605909D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCE44AA-E5D8-4D24-85BD-58D4605909D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

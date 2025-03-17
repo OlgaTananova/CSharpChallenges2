@@ -10,3 +10,6 @@ C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.C
 C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.Core\obj\Debug\net8.0\refint\OrderProcessing.Core.dll
 C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.Core\obj\Debug\net8.0\OrderProcessing.Core.pdb
 C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.Core\obj\Debug\net8.0\ref\OrderProcessing.Core.dll
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.Core\obj\Debug\net8.0\OrderProcessing.Core.csproj.AssemblyReference.cache
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.Core\bin\Debug\net8.0\OrderProcessing.Core.runtimeconfig.json
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\OrderProcessing\OrderProcessing.Core\obj\Debug\net8.0\OrderProcessing.Core.genruntimeconfig.cache
