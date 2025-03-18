@@ -24,11 +24,9 @@ namespace OrderProcessing.Core.Migrations
 
             modelBuilder.Entity("OrderProcessing.Core.Models.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -41,41 +39,39 @@ namespace OrderProcessing.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("5fcd497b-9de7-4a63-b0f4-e63e7b87816f"),
                             Name = "Alice"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("b03d1a25-3837-4082-baa8-f1931ec3ec7f"),
                             Name = "Bob"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("c0a4584a-d12d-49b4-9d76-e09edd0b452e"),
                             Name = "Jack"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("dafe1ed5-a965-4505-a349-c79c68a760c7"),
                             Name = "Natalie"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("933eea88-ab28-4797-9446-3cbd50bdf05f"),
                             Name = "John"
                         });
                 });
 
             modelBuilder.Entity("OrderProcessing.Core.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uuid");
 
                     b.Property<bool>("IsPaid")
                         .HasColumnType("boolean");
@@ -102,50 +98,50 @@ namespace OrderProcessing.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CustomerId = 1,
+                            Id = new Guid("85bc0711-e992-4034-97f3-f03f7374efad"),
+                            CustomerId = new Guid("5fcd497b-9de7-4a63-b0f4-e63e7b87816f"),
                             IsPaid = true,
-                            OrderDate = new DateTime(2025, 3, 12, 23, 4, 22, 378, DateTimeKind.Utc).AddTicks(3388),
+                            OrderDate = new DateTime(2025, 3, 13, 20, 48, 5, 666, DateTimeKind.Utc).AddTicks(2952),
                             PreferredCurrency = "USD",
                             Status = 1,
                             Total = 0m
                         },
                         new
                         {
-                            Id = 2,
-                            CustomerId = 2,
+                            Id = new Guid("3d971473-a1ae-49ef-a9c1-4fc2545045a0"),
+                            CustomerId = new Guid("b03d1a25-3837-4082-baa8-f1931ec3ec7f"),
                             IsPaid = true,
-                            OrderDate = new DateTime(2025, 3, 7, 23, 4, 22, 378, DateTimeKind.Utc).AddTicks(3398),
+                            OrderDate = new DateTime(2025, 3, 8, 20, 48, 5, 666, DateTimeKind.Utc).AddTicks(2963),
                             PreferredCurrency = "USD",
                             Status = 1,
                             Total = 0m
                         },
                         new
                         {
-                            Id = 3,
-                            CustomerId = 3,
+                            Id = new Guid("93867435-f157-4b9f-adb5-cf3a4ef8f63d"),
+                            CustomerId = new Guid("c0a4584a-d12d-49b4-9d76-e09edd0b452e"),
                             IsPaid = false,
-                            OrderDate = new DateTime(2025, 3, 16, 23, 4, 22, 378, DateTimeKind.Utc).AddTicks(3400),
+                            OrderDate = new DateTime(2025, 3, 17, 20, 48, 5, 666, DateTimeKind.Utc).AddTicks(2965),
                             PreferredCurrency = "USD",
                             Status = 1,
                             Total = 0m
                         },
                         new
                         {
-                            Id = 4,
-                            CustomerId = 4,
+                            Id = new Guid("0e8397b4-51fa-4367-8bf5-349b8952fb76"),
+                            CustomerId = new Guid("dafe1ed5-a965-4505-a349-c79c68a760c7"),
                             IsPaid = false,
-                            OrderDate = new DateTime(2025, 3, 14, 23, 4, 22, 378, DateTimeKind.Utc).AddTicks(3401),
+                            OrderDate = new DateTime(2025, 3, 15, 20, 48, 5, 666, DateTimeKind.Utc).AddTicks(2966),
                             PreferredCurrency = "USD",
                             Status = 1,
                             Total = 0m
                         },
                         new
                         {
-                            Id = 5,
-                            CustomerId = 5,
+                            Id = new Guid("eb882a41-2fb8-492c-8749-5584c2abdfc2"),
+                            CustomerId = new Guid("933eea88-ab28-4797-9446-3cbd50bdf05f"),
                             IsPaid = false,
-                            OrderDate = new DateTime(2025, 3, 17, 23, 4, 22, 378, DateTimeKind.Utc).AddTicks(3402),
+                            OrderDate = new DateTime(2025, 3, 18, 20, 48, 5, 666, DateTimeKind.Utc).AddTicks(2968),
                             PreferredCurrency = "USD",
                             Status = 1,
                             Total = 0m
@@ -154,20 +150,18 @@ namespace OrderProcessing.Core.Migrations
 
             modelBuilder.Entity("OrderProcessing.Core.Models.OrderItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
@@ -183,61 +177,59 @@ namespace OrderProcessing.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            OrderId = 1,
+                            Id = new Guid("b3e34d68-1a79-4066-bdd1-2eca599067df"),
+                            OrderId = new Guid("85bc0711-e992-4034-97f3-f03f7374efad"),
                             Price = 1200m,
-                            ProductId = 1,
+                            ProductId = new Guid("91c0c49b-7ea8-49bd-8122-873e9a5566ec"),
                             Quantity = 20
                         },
                         new
                         {
-                            Id = 2,
-                            OrderId = 2,
+                            Id = new Guid("cb70d6ed-ba07-46f2-b4e8-a15e336ad13f"),
+                            OrderId = new Guid("3d971473-a1ae-49ef-a9c1-4fc2545045a0"),
                             Price = 700m,
-                            ProductId = 2,
+                            ProductId = new Guid("14bd35e6-80ac-492d-a009-7368c364c120"),
                             Quantity = 10
                         },
                         new
                         {
-                            Id = 3,
-                            OrderId = 2,
+                            Id = new Guid("854b011e-f18e-49d7-9a6f-7054d77d324f"),
+                            OrderId = new Guid("3d971473-a1ae-49ef-a9c1-4fc2545045a0"),
                             Price = 800m,
-                            ProductId = 3,
+                            ProductId = new Guid("03f35600-36e7-44f4-9306-1e80101cb205"),
                             Quantity = 2
                         },
                         new
                         {
-                            Id = 4,
-                            OrderId = 3,
+                            Id = new Guid("9844b83e-5115-4286-8569-5d86c9a87db1"),
+                            OrderId = new Guid("93867435-f157-4b9f-adb5-cf3a4ef8f63d"),
                             Price = 1200m,
-                            ProductId = 1,
+                            ProductId = new Guid("91c0c49b-7ea8-49bd-8122-873e9a5566ec"),
                             Quantity = 3
                         },
                         new
                         {
-                            Id = 5,
-                            OrderId = 4,
+                            Id = new Guid("54d1315e-5566-405c-831c-45486ea94088"),
+                            OrderId = new Guid("0e8397b4-51fa-4367-8bf5-349b8952fb76"),
                             Price = 50m,
-                            ProductId = 4,
+                            ProductId = new Guid("f2096cd3-7a0c-41da-b6cb-4f46f6ebccba"),
                             Quantity = 10
                         },
                         new
                         {
-                            Id = 6,
-                            OrderId = 5,
+                            Id = new Guid("abd40453-d7c3-4fed-bd27-5bbae08d3df4"),
+                            OrderId = new Guid("eb882a41-2fb8-492c-8749-5584c2abdfc2"),
                             Price = 800m,
-                            ProductId = 3,
+                            ProductId = new Guid("03f35600-36e7-44f4-9306-1e80101cb205"),
                             Quantity = 5
                         });
                 });
 
             modelBuilder.Entity("OrderProcessing.Core.Models.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("BasePrice")
                         .HasColumnType("numeric");
@@ -259,28 +251,28 @@ namespace OrderProcessing.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("91c0c49b-7ea8-49bd-8122-873e9a5566ec"),
                             BasePrice = 1200m,
                             ProductName = "Laptop",
                             Stock = 100
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("14bd35e6-80ac-492d-a009-7368c364c120"),
                             BasePrice = 700m,
                             ProductName = "Tablet",
                             Stock = 80
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("03f35600-36e7-44f4-9306-1e80101cb205"),
                             BasePrice = 800m,
                             ProductName = "Display",
                             Stock = 50
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("f2096cd3-7a0c-41da-b6cb-4f46f6ebccba"),
                             BasePrice = 50m,
                             ProductName = "Mouse",
                             Stock = 40

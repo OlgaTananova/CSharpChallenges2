@@ -1,10 +1,9 @@
 
 namespace OrderProcessing.Core.Events;
 
-public class OrderPlacedEvent : EventArgs
+public class OrderPaidEvent
 {
-
-    public OrderPlacedEvent(Guid id, Guid customerId, decimal totalAmount)
+    public OrderPaidEvent(Guid id, Guid customerId, decimal totalAmount)
     {
         OrderId = id;
         CustomerId = customerId;
@@ -14,4 +13,5 @@ public class OrderPlacedEvent : EventArgs
     public Guid OrderId { get; set; }
     public Guid CustomerId { get; set; }
     public decimal TotalAmount { get; set; }
+
 }

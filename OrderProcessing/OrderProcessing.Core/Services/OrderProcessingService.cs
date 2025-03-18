@@ -65,7 +65,7 @@ public class OrderProcessingService : IOrderProcessingService
         return customers.Where(c => c.Orders.Count == 0).ToList();
     }
 
-    public List<int> GetMostPopularProducts(List<Customer> customers, int topN)
+    public List<Guid> GetMostPopularProducts(List<Customer> customers, int topN)
     {
         return customers
             .SelectMany(c => c.Orders)

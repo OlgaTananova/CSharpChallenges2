@@ -5,7 +5,7 @@ namespace OrderProcessing.Core.Services;
 public interface IOrderProcessingService
 {
     public List<Customer> GetTopCustomersBySpending(List<Customer> customers, int topN);
-    public List<int> GetMostPopularProducts(List<Customer> customers, int topN);
+    public List<Guid> GetMostPopularProducts(List<Customer> customers, int topN);
 
     public List<Order> GetRecentOrders(List<Customer> customers, int days);
     public List<Customer> GetCustomersWithNoOrders(List<Customer> customers);
