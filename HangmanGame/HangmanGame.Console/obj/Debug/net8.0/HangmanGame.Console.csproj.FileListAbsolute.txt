@@ -1,0 +1,15 @@
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\bin\Debug\net8.0\HangmanGame.Console.exe
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\bin\Debug\net8.0\HangmanGame.Console.deps.json
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\bin\Debug\net8.0\HangmanGame.Console.runtimeconfig.json
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\bin\Debug\net8.0\HangmanGame.Console.dll
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\bin\Debug\net8.0\HangmanGame.Console.pdb
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.AssemblyInfoInputs.cache
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.AssemblyInfo.cs
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.csproj.CoreCompileInputs.cache
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.sourcelink.json
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.dll
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\refint\HangmanGame.Console.dll
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.pdb
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\HangmanGame.Console.genruntimeconfig.cache
+C:\Users\Olga\Documents\.NET\CSharpChallenges2\HangmanGame\HangmanGame.Console\obj\Debug\net8.0\ref\HangmanGame.Console.dll
