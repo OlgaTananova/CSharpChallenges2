@@ -9,6 +9,7 @@ public class SecurityCamera : SmartDeviceBase
     private TimeSpan? RecordingTime;
     protected override async Task ExecuteCommandAsync(string command)
     {
+        await Task.Delay(1500);
         if (command.StartsWith("StartRecording") || command.StartsWith("TurnOn"))
         {
             RecordingStart = DateTime.Now;
@@ -27,7 +28,5 @@ public class SecurityCamera : SmartDeviceBase
             }
         }
         OnStatusChanged();
-        await Task.Delay(1500);
-
     }
 }

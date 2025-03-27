@@ -1,4 +1,4 @@
-namespace SmartDeviceTests;
+namespace TicketingSystemTests;
 
 public class UnitTest1
 {

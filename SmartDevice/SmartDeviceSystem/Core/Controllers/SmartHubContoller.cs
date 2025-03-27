@@ -24,9 +24,19 @@ public class SmartHubContoller
 
     public async Task SendCommandToAllDevices(string command)
     {
+        // if (CommandIssued != null)
+        // {
+        //     await CommandIssued(this, new DeviceCommandEventArg(null, command));
+        // }
+
         if (CommandIssued != null)
         {
-            await CommandIssued(this, new DeviceCommandEventArg(null, command));
+            var handlers = CommandIssued.GetInvocationList();
+            var tasks = handlers
+                .Cast<Func<object, DeviceCommandEventArg, Task>>()
+                .Select(h => h(this, new DeviceCommandEventArg(null, command)));
+
+            await Task.WhenAll(tasks);
         }
     }
 
