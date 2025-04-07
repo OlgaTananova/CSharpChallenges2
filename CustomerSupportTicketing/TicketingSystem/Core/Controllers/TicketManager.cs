@@ -8,7 +8,9 @@ namespace TicketingSystem.Core.Controllers;
 // Creates, updates, closes tickets by invoking hub
 public class TicketManager
 {
-    public List<Ticket> tickets { get; set; } = new List<Ticket>();
+    private List<Ticket> _tickets = new List<Ticket>();
+
+    public List<Ticket> Tickets => _tickets;
 
     private readonly TicketHub _ticketHub;
 
@@ -59,7 +61,7 @@ public class TicketManager
 
         if (ticket != null)
         {
-            tickets.Add(ticket);
+            _tickets.Add(ticket);
             await _ticketHub.SendTicketCreatedCommand(ticket);
         }
         return ticket;
@@ -67,7 +69,7 @@ public class TicketManager
 
     public async Task UpdateTicket(string ticketId, string update)
     {
-        var updatedTicket = tickets.FirstOrDefault(t => t.Id == ticketId);
+        var updatedTicket = _tickets.FirstOrDefault(t => t.Id == ticketId);
         if (updatedTicket is null)
         {
             Console.WriteLine("The requested ticket is not found and cannot be updated.");
@@ -82,7 +84,7 @@ public class TicketManager
 
     public async Task CloseTicket(string ticketId, string result)
     {
-        var closingTicket = tickets.FirstOrDefault(t => t.Id == ticketId);
+        var closingTicket = _tickets.FirstOrDefault(t => t.Id == ticketId);
         if (closingTicket is null)
         {
             Console.WriteLine("The requested ticket is not found and cannot be closed.");

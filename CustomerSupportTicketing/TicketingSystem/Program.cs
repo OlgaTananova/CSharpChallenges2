@@ -4,7 +4,12 @@ using TicketingSystem.Core.Services;
 TicketHub hub = new();
 TicketManager manager = new(hub);
 NotificationService notificationService = new NotificationService();
+AnalyticService analyticService = new AnalyticService();
+AutoResponderService autoResponderService = new AutoResponderService();
 notificationService.SubscribeToTicketEvents(hub);
+analyticService.SubscribeToTicketEvents(hub);
+autoResponderService.SubscribeToTicketEvents(hub);
+
 
 await manager.CreateTicket("ticket-1", "customer-1", "There is a bug in the system", "Bug", "400");
 await Task.Delay(1000);

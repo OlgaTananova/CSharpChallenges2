@@ -6,7 +6,7 @@ namespace TicketingSystem.Core.Services;
 
 public class NotificationService : ITicketService
 {
-    public async Task RespondToTicketEvent(Ticket ticket, string eventType)
+    public virtual async Task RespondToTicketEvent(Ticket ticket, string eventType)
     {
         Console.WriteLine($"Sending email about ticket {ticket.Id} {eventType}");
         await Task.Delay(2000);
