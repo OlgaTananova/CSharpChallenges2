@@ -7,10 +7,11 @@ public abstract class Vehicle
 
     public required string LicensePlate { get; set; }
 
-    public VehicleType VehicleType { get; set; }
+    public VehicleType VehicleType { get; }
 
-    public Vehicle(VehicleType type)
+    protected Vehicle(VehicleType type)
     {
         VehicleType = type;
     }
+    public abstract int RequiredSpots { get; }
 }

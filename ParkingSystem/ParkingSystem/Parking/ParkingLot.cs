@@ -6,102 +6,64 @@ namespace ParkingSystem.Parking;
 
 public class ParkingLot
 {
-    public List<ParkingSpot> ParkingSpots { get; set; } = new List<ParkingSpot>();
-
-    private int _totalSpots;
-    private int _occupiedSpots;
-    private int _avaliableSpots;
-
-    public int AvaliableSpots;
+    public List<ParkingSpot> Spots { get; private set; }
 
     public ParkingLot(int totalSpots)
     {
-        _totalSpots = totalSpots;
-        AvaliableSpots = _totalSpots;
-        CreateParkingSpots(_totalSpots);
+        Spots = Enumerable.Range(1, totalSpots).Select(s => new ParkingSpot { SpotId = s }).ToList();
     }
 
-    private void CreateParkingSpots(int numberOfSpots)
+    public bool ParkVehicle(Vehicle vehicle)
     {
-        for (int i = 1; i <= numberOfSpots; i++)
+        var candidateSpots = FindAvaliableSpot(vehicle.RequiredSpots);
+        if (candidateSpots.Count != vehicle.RequiredSpots)
         {
-            ParkingSpot spot = new ParkingSpot
-            {
-                SpotId = i
-            };
-            ParkingSpots.Add(spot);
+            Console.WriteLine($"There are no avaliable spots for the vehicle license plate {vehicle.LicensePlate}");
+            return false;
         }
-    }
 
-    public (int, int) ParkVehicle(Vehicle vehicle)
-    {
-        // check if there are avaliable spots - if not - return 0;
-        // if yes assign vehicle to the first unoccupied spot
-        var index = GetValiableSpots(vehicle.VehicleType);
-        if (index != (-1, -1) && index.Item2 == 0)
+        foreach (var spot in candidateSpots)
         {
-            var spot = ParkingSpots[index.Item1];
-            spot.Vehicle = vehicle;
-            _occupiedSpots++;
-            _avaliableSpots = _totalSpots - _occupiedSpots;
-            return (spot.SpotId, 0);
+            spot.Park(vehicle);
+            Console.WriteLine($"Parked vehicle with license plate {vehicle.LicensePlate} at spots: {string.Join(", ", candidateSpots.Select(s => s.SpotId))}");
         }
-        else if (index != (-1, -1) && index.Item2 != 0)
-        {
-            var spot1 = ParkingSpots[index.Item1];
-            var spot2 = ParkingSpots[index.Item2];
-            spot1.Vehicle = vehicle;
-            spot2.Vehicle = vehicle;
-            _occupiedSpots += 2;
-            _avaliableSpots = _totalSpots - _occupiedSpots;
-            return (spot1.SpotId, spot2.SpotId);
-        }
-        // decrease the number of avaliable spots
-        // return spotID
-        return (-1, -1);
+        return true;
     }
 
     public bool RemoveVehicle(string licensePlate)
     {
-        // find a parking spot contaning a vehicle wih the license plate
+        var occupiedSpots = Spots.Where(s => s.Vehicle?.LicensePlate.ToLower() == licensePlate.ToLower()).ToList();
 
-        var spots = ParkingSpots.FindAll(s => s.Vehicle?.LicensePlate == licensePlate);
-        if (spots == null) return false;
+        if (!occupiedSpots.Any())
+        {
+            Console.WriteLine($"There was not found any vehicle with license plate {licensePlate}");
+            return false;
+        }
 
-        // if found - remove Vehicle from the parking spot (make it null)
-
-        spots.ForEach(s => { s.IsOccupied = false; s.Vehicle = null; });
-        _occupiedSpots -= _occupiedSpots - spots.Count;
-        _avaliableSpots = _totalSpots - _occupiedSpots;
+        occupiedSpots.ForEach(s => s.Vacate());
+        Console.WriteLine($"The vehicle with licence plate {licensePlate} was removed from spots: {string.Join(", ", occupiedSpots.Select(s => s.SpotId))}");
         return true;
+
     }
 
-    public (int, int) GetValiableSpots(VehicleType type)
+
+    public List<int>? ShowAvaliableSpots()
     {
-        if (_avaliableSpots == 0) return (-1, -1);
-        if (type == VehicleType.Car || type == VehicleType.Motocycle)
-        {
-            var index = ParkingSpots.FindIndex(s => !s.IsOccupied);
-            return (index, 0);
-        }
-        else if (type == VehicleType.Truck)
-        {
-            var index = ParkingSpots.FindIndex(s => !s.IsOccupied);
-            if (index != -1)
-            {
-                if (index + 1 < ParkingSpots.Count - 1 && !ParkingSpots[index + 1].IsOccupied)
-                {
-                    return (index, index + 1);
-                }
-                else
-                {
-                    return (-1, -1);
-                }
-            }
-            return (-1, -1);
-        }
-        return (-1, -1);
+        var avalialeSpots = Spots.Where(s => !s.IsOccupied).Select(s => s.SpotId).ToList();
+        Console.WriteLine($"AvaliableSpots: {string.Join(", ", avalialeSpots)}");
+        return avalialeSpots;
     }
 
+
+    private List<ParkingSpot> FindAvaliableSpot(int requiredSpots)
+    {
+        for (int i = 0; i <= Spots.Count - requiredSpots; i++)
+        {
+            var range = Spots.GetRange(i, requiredSpots);
+            if (range.All(s => !s.IsOccupied))
+                return range;
+        }
+        return new List<ParkingSpot>();
+    }
 
 }

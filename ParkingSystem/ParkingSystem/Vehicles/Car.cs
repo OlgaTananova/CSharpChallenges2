@@ -4,9 +4,7 @@ namespace ParkingSystem.Vehicles;
 
 public class Car : Vehicle
 {
-    public Car(VehicleType type = VehicleType.Car) : base(type)
-    {
-
-    }
+    public Car() : base(VehicleType.Car) { }
+    public override int RequiredSpots => 1;
 
 }
