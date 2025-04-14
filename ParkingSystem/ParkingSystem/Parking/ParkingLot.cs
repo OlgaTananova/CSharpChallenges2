@@ -13,8 +13,9 @@ public class ParkingLot
         Spots = Enumerable.Range(1, totalSpots).Select(s => new ParkingSpot { SpotId = s }).ToList();
     }
 
-    public bool ParkVehicle(Vehicle vehicle)
+    public async Task<bool> ParkVehicle(Vehicle vehicle)
     {
+
         var candidateSpots = FindAvaliableSpot(vehicle.RequiredSpots);
         if (candidateSpots.Count != vehicle.RequiredSpots)
         {
@@ -22,15 +23,28 @@ public class ParkingLot
             return false;
         }
 
+        var success = true;
         foreach (var spot in candidateSpots)
         {
-            spot.Park(vehicle);
-            Console.WriteLine($"Parked vehicle with license plate {vehicle.LicensePlate} at spots: {string.Join(", ", candidateSpots.Select(s => s.SpotId))}");
+            success &= await spot.TryParkAsync(vehicle);
         }
-        return true;
+        if (success)
+        {
+            Console.WriteLine($"Parked vehicle with license plate {vehicle.LicensePlate} at spots: {string.Join(", ", candidateSpots.Select(s => s.SpotId))}");
+            return true;
+        }
+        else
+        {
+            foreach (var spot in candidateSpots)
+            {
+                await spot.TryVacateAsync(vehicle.LicensePlate);
+            }
+            Console.WriteLine($"Failed to park the vehicle with license plate {vehicle.LicensePlate}");
+            return false;
+        }
     }
 
-    public bool RemoveVehicle(string licensePlate)
+    public async Task<bool> RemoveVehicle(string licensePlate)
     {
         var occupiedSpots = Spots.Where(s => s.Vehicle?.LicensePlate.ToLower() == licensePlate.ToLower()).ToList();
 
@@ -40,7 +54,10 @@ public class ParkingLot
             return false;
         }
 
-        occupiedSpots.ForEach(s => s.Vacate());
+        foreach (var spot in occupiedSpots)
+        {
+            await spot.TryVacateAsync(licensePlate);
+        }
         Console.WriteLine($"The vehicle with licence plate {licensePlate} was removed from spots: {string.Join(", ", occupiedSpots.Select(s => s.SpotId))}");
         return true;
 
