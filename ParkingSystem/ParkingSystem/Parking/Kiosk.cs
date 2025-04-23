@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Channels;
 using ParkingSystem.Vehicles;
 
 namespace ParkingSystem.Parking;
@@ -30,6 +31,13 @@ public class Kiosk
 
         Console.WriteLine($"{vehicle.LicensePlate} failed to park after {maxRetries} attempts.");
         return false;
+    }
+
+    public async Task<string> RunKioskWithQueueAsync(ChannelWriter<VehicleRequest> wwriter, Vehicle vehicle)
+    {
+        VehicleRequest request = new VehicleRequest { Vehicle = vehicle };
+        await wwriter.WriteAsync(request);
+        return await request.Completion.Task;
     }
 
 }
