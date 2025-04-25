@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using LibrarySystem.Core;
 using LibrarySystem.Services;
 
@@ -6,6 +7,24 @@ namespace LibrarySystemTests;
 
 public class LibrarySystemTests
 {
+    private (Library library, User user, Book book) CreateLibraryWithUserAndBook(
+        int userId = 1,
+        string userName = "John",
+        string userSurname = "Doe",
+        string bookTitle = "War and Peace",
+        string bookAuthor = "Leo Tolstoy",
+        string bookISBN = "BOOK1",
+        int totalCopies = 2)
+    {
+        var library = new Library();
+        var user = new User(userId, userName, userSurname);
+        var book = new Book(bookISBN, bookTitle, bookAuthor, totalCopies);
+
+        library.AddUser(user);
+        library.AddBookToLibrary(book);
+
+        return (library, user, book);
+    }
 
     [Fact]
     public void AddUser_WhenNoSuchUserInSystem_ReturnsTrue()
@@ -73,13 +92,8 @@ public class LibrarySystemTests
     [Fact]
     public void BorrowBook_WhenValidInput_ReturnsTrue()
     {
-        Library library = new();
-        User user = new(1, "John", "Doe");
-        Book book = new("BOOK1", "War and Peace", "LeoTolstoy", 2);
+        var (library, user, book) = CreateLibraryWithUserAndBook();
         int avaliableCopiesAfterLoan = 1;
-        library.AddUser(user);
-        library.AddBookToLibrary(book);
-
         var result = library.BorrowBook(book.Title, user.Id);
         var loan = user.Loans.FirstOrDefault(l => l.Book.ISBN == book.ISBN);
 
@@ -91,13 +105,8 @@ public class LibrarySystemTests
     [Fact]
     public void BorrowBook_WhenNoAvaliableCopies_ReturnsFalse()
     {
-        Library library = new();
-        User user = new(1, "John", "Doe");
-        Book book = new("BOOK1", "War and Peace", "LeoTolstoy", 0);
+        var (library, user, book) = CreateLibraryWithUserAndBook(totalCopies: 0);
         int avaliableCopiesAfterLoan = 0;
-        library.AddUser(user);
-        library.AddBookToLibrary(book);
-
         var result = library.BorrowBook(book.Title, user.Id);
         Assert.False(result);
         Assert.Equal(avaliableCopiesAfterLoan, book.AvaliableCopies);
@@ -126,6 +135,50 @@ public class LibrarySystemTests
 
         var result = library.BorrowBook(book.Title, userId);
         Assert.False(result);
+    }
+
+    [Fact]
+    public void ReturnBook_WhenValid_ReturnsTrue_AndIncrementCopies()
+    {
+        var (library, user, book) = CreateLibraryWithUserAndBook();
+
+        library.BorrowBook(book.Title, user.Id);
+        int avaliableCopiesAterReturn = 2;
+        var result = library.ReturnBook(user.Id, book.ISBN);
+
+        Assert.True(result);
+        Assert.Equal(avaliableCopiesAterReturn, book.AvaliableCopies);
+
+    }
+
+    [Fact]
+    public void ReturnBook_WhenNotBorrowed_ReturnsFalse()
+    {
+        var (library, user, book) = CreateLibraryWithUserAndBook();
+
+        var result = library.ReturnBook(user.Id, book.ISBN);
+
+        Assert.False(result);
+
+    }
+
+    [Fact]
+    public void ReturnBook_WithReservation_DequeuesNextUserAndBorrows()
+    {
+        var (library, user, book) = CreateLibraryWithUserAndBook(totalCopies: 1);
+        User user2 = new(2, "Jane", "Smith");
+
+        library.AddUser(user2);
+        library.BorrowBook(userId: user.Id, title: book.Title);
+        library.BorrowBook(userId: user2.Id, title: book.Title);
+
+        var result = library.ReturnBook(userId: user.Id, isbn: book.ISBN);
+
+        Assert.True(result);
+        Assert.Contains(book, user2.Loans.Select(l => l.Book));
+        Assert.Equal(0, book.AvaliableCopies);
+        Assert.Empty(book.ReservationQueue);
+
     }
 
 
