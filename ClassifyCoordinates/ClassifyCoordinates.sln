@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassifyCoordinatesConsole", "ClassifyCoordinatesConsole\ClassifyCoordinatesConsole.csproj", "{379CF7AF-3AF6-4FF7-B488-49A4A21BB75A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassifyCoordinates.Tests", "ClassifyCoordinates.Tests\ClassifyCoordinates.Tests.csproj", "{200AC362-3C1E-44C7-92A0-33F276BADDA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{379CF7AF-3AF6-4FF7-B488-49A4A21BB75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379CF7AF-3AF6-4FF7-B488-49A4A21BB75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379CF7AF-3AF6-4FF7-B488-49A4A21BB75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379CF7AF-3AF6-4FF7-B488-49A4A21BB75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{200AC362-3C1E-44C7-92A0-33F276BADDA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{200AC362-3C1E-44C7-92A0-33F276BADDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{200AC362-3C1E-44C7-92A0-33F276BADDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200AC362-3C1E-44C7-92A0-33F276BADDA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
